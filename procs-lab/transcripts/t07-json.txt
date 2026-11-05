@@ -1,0 +1,11 @@
+$ procs --json --insert TcpPort 102924
+[
+{"PID": 102924, "User": "root", "│": "│", "TTY": "", "CPU": 0, "MEM": 83, "CPU Time": 0, "TCP": "[18089]", "│": "│", "Command": "python3 specimen-server.py"}
+]
+$ procs --json specimen | python3 fixtures/json-summary.py
+python3 specimen-sleeper.py         cpu    0.0%  mem   0.1%
+python3 specimen-spinner.py         cpu   94.3%  mem   0.1%
+python3 specimen-server.py          cpu    0.0%  mem   0.1%
+python3 specimen-hog.py             cpu    0.0%  mem   3.9%
+bash specimen-family.sh             cpu    0.0%  mem   0.0%
+python3 fixtures/specimen-burner.py cpu    0.0%  mem   0.1%

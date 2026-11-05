@@ -1,0 +1,24 @@
+$ procs specimen spinner
+ PID:▲  User │ TTY  CPU MEM CPU Time │ Command
+             │      [%] [%]          │
+ 102923 root │     98.0 0.1 00:05:17 │ python3 specimen-spinner.py
+$ procs --and specimen spinner
+ PID:▲  User │ TTY  CPU MEM CPU Time │ Command
+             │      [%] [%]          │
+ 102923 root │     98.0 0.1 00:05:17 │ python3 specimen-spinner.py
+$ procs --or spinner hog
+ PID:▲  User │ TTY  CPU MEM CPU Time │ Command
+             │      [%] [%]          │
+ 102923 root │     96.2 0.1 00:05:17 │ python3 specimen-spinner.py
+ 102925 root │      0.0 3.9 00:00:00 │ python3 specimen-hog.py
+$ procs --or specimen sleeper | tail -n +3 | wc -l
+6
+$ procs --nand specimen spinner | tail -n +3 | wc -l
+33
+$ procs --nor specimen spinner | head -6
+ PID:▲  User │ TTY   CPU MEM CPU Time │ Command
+             │       [%] [%]          │
+ 1      root │       0.0 0.1 00:00:09 │ /usr/lib/systemd/systemd
+ 17     root │       0.0 0.1 00:00:01 │ /usr/lib/systemd/systemd-journald
+ 67     root │       9.8 4.6 00:10:30 │ /opt/hatch/bin/hatch daemon --runtime-cell-leader=2233
+ 748    root │       0.0 0.2 00:01:11 │ /opt/hatch/bin/hatch-execd --runtime-cell-leader=2233

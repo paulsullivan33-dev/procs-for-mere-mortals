@@ -1,0 +1,80 @@
+$ procs --gen-config | wc -l
+140
+$ procs --gen-config | head -12
+[[columns]]
+kind = "Pid"
+style = "BrightYellow|Yellow"
+numeric_search = true
+nonnumeric_search = false
+align = "Left"
+
+[[columns]]
+kind = "User"
+style = "BrightGreen|Green"
+numeric_search = false
+nonnumeric_search = true
+$ cat ../examples/procs.toml
+# procs.toml - the configuration built in the "Making it yours"
+# chapter: a small, deliberate column set with the search
+# switches set on purpose. Pid can be searched by number,
+# User and Command by text; the rest are display-only.
+# Full sample with every option: procs --gen-config
+
+[[columns]]
+kind = "Pid"
+numeric_search = true
+nonnumeric_search = false
+
+[[columns]]
+kind = "User"
+numeric_search = false
+nonnumeric_search = true
+
+[[columns]]
+kind = "UsageCpu"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "UsageMem"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "TcpPort"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "ElapsedTime"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "Command"
+numeric_search = false
+nonnumeric_search = true
+$ procs --load-config ../examples/procs.toml specimen
+ PID:▲  User CPU  MEM TCP     Elapsed    Command
+             [%]  [%]
+ 102922 root 0.0  0.1 []      7.6minutes python3 specimen-sleeper.py
+ 102923 root 97.1 0.1 []      7.6minutes python3 specimen-spinner.py
+ 102924 root 0.0  0.1 [18089] 7.6minutes python3 specimen-server.py
+ 102925 root 0.0  3.9 []      7.6minutes python3 specimen-hog.py
+ 102926 root 0.0  0.0 []      7.6minutes bash specimen-family.sh
+ 108755 root 0.0  0.1 []      14seconds  python3 fixtures/specimen-burner.py
+$ cp ../examples/procs.toml ~/.procs.toml
+$ procs specimen
+ PID:▲  User CPU  MEM TCP     Elapsed    Command
+             [%]  [%]
+ 102922 root 0.0  0.1 []      7.6minutes python3 specimen-sleeper.py
+ 102923 root 98.0 0.1 []      7.6minutes python3 specimen-spinner.py
+ 102924 root 0.0  0.1 [18089] 7.6minutes python3 specimen-server.py
+ 102925 root 0.0  3.9 []      7.6minutes python3 specimen-hog.py
+ 102926 root 0.0  0.0 []      7.6minutes bash specimen-family.sh
+ 108755 root 0.0  0.1 []      14seconds  python3 fixtures/specimen-burner.py
+$ rm ~/.procs.toml
+$ procs --load-config ../examples/procs-no-search.toml specimen
+ PID:▲ User CPU MEM TCP Elapsed Command
+            [%] [%]
+exit: 0

@@ -1,0 +1,21 @@
+$ procs specimen | tr -cd '\033' | wc -c
+0
+$ procs --color always specimen | tr -cd '\033' | wc -c
+144
+$ procs --color always specimen | sed -n l | head -4
+ \033[38;5;15mPID:\342\226\262 \033[0m \033[38;5;15mUser\033[0m \033[\
+38;5;15m\342\224\202\033[0m \033[38;5;15mTTY\033[0m \033[38;5;15m CPU\
+\033[0m \033[38;5;15mMEM\033[0m \033[38;5;15mCPU Time\033[0m \033[38;\
+5;15m\342\224\202\033[0m \033[38;5;15mCommand                        \
+$ ./pty-run.py --rows 40 -- procs specimen | tr -cd '\033' | wc -c
+147
+$ rm -f spy-called.txt spy-input.bin
+$ PAGER=/home/hatch/workspace/procs-for-mere-mortals/procs-lab/pager-spy.sh ./pty-run.py --rows 12 --keys q --keys-delay 2 -- procs > /dev/null
+$ cat spy-called.txt
+cat: spy-called.txt: No such file or directory
+$ ./pty-run.py --rows 12 --keys q --keys-delay 2 -- procs | ./render.sh | tail -4
+ 102924 root │        0.0 0.1 00:00:00 │ python3 specimen-server.py                                          >
+ 102925 root │        0.0 3.9 00:00:00 │ python3 specimen-hog.py                                             >
+ 102926 root │        0.0 0.0 00:00:00 │ bash specimen-family.sh                                             >
+:>$ procs | wc -l
+35

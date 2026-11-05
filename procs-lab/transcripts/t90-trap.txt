@@ -1,0 +1,24 @@
+$ python3 -c "import time; time.sleep(300)" zanzibar &
+$ python3 -c "import time; time.sleep(300)" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa zanzibar &
+$ procs zanzibar
+ PID:▲  User │ TTY CPU MEM CPU Time │ Command
+             │     [%] [%]          │
+ 109092 root │     0.0 0.1 00:00:00 │ python3 -c import time; time.sleep(300) zanzibar
+ 109093 root │     0.0 0.1 00:00:00 │ python3 -c import time; time.sleep(300) aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa zanzibar
+$ procs ZANZIBAR
+ PID:▲ User │ TTY CPU MEM CPU Time │ Command
+            │     [%] [%]          │
+$ procs sleep
+ PID:▲  User │ TTY CPU MEM CPU Time │ Command
+             │     [%] [%]          │
+ 102922 root │     0.0 0.1 00:00:00 │ python3 specimen-sleeper.py
+ 102928 root │     0.0 0.0 00:00:00 │ sleep 900
+ 102929 root │     0.0 0.0 00:00:00 │ sleep 900
+ 108790 root │     0.0 0.0 00:00:00 │ /bin/bash --norc --noprofile -c umask 0007; cd ~/workspace/gping-for-mere-mortals/gping-lab && (setsid nohup python3 fixtures/slow-server.py > /tmp/slow-server.log 2>&1 &) && sleep 1 && python3 pty-run.py transcripts/t07-cmd-steady.raw 18 -- /tmp/gping-bin/gping --cmd fixtures/steady.sh && /tmp/gping-venv/bin/python render.py transcripts/t07-cmd-steady.raw > transcripts/t07-cmd-steady.txt && cat transcripts/t07-cmd-steady.txt
+ 109085 root │     0.0 0.0 00:00:00 │ sleep 3
+ 109092 root │     0.0 0.1 00:00:00 │ python3 -c import time; time.sleep(300) zanzibar
+ 109093 root │     0.0 0.1 00:00:00 │ python3 -c import time; time.sleep(300) aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa zanzibar
+$ procs qqq-nothing
+ PID:▲ User │ TTY CPU MEM CPU Time │ Command
+            │     [%] [%]          │
+exit: 0

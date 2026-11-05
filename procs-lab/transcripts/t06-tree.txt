@@ -1,0 +1,26 @@
+$ procs --tree specimen
+          PID    User │ TTY  CPU MEM CPU Time │ Command
+                      │      [%] [%]          │
+ ├┬────── 1      root │      0.0 0.1 00:00:09 │ /usr/lib/systemd/systemd
+ │├────── 102922 root │      0.0 0.1 00:00:00 │ python3 specimen-sleeper.py
+ │├────── 102923 root │     97.3 0.1 00:05:18 │ python3 specimen-spinner.py
+ │├────── 102924 root │      0.0 0.1 00:00:00 │ python3 specimen-server.py
+ │├────── 102925 root │      0.0 3.9 00:00:00 │ python3 specimen-hog.py
+ │└┬───── 102926 root │      0.0 0.0 00:00:00 │ bash specimen-family.sh
+ │ ├───── 102928 root │      0.0 0.0 00:00:00 │ sleep 900
+ │ └───── 102929 root │      0.0 0.0 00:00:00 │ sleep 900
+ └┬────── 748    root │      8.9 0.2 00:01:11 │ /opt/hatch/bin/hatch-execd --runtime-cell-leader=2233
+  └┬───── 108750 root │      0.0 0.0 00:00:00 │ /bin/bash --norc --noprofile -c umask 0007; bash /tmp/procs-lab-scratch/run-transcripts.sh 2>&1 | tail -20
+   └┬──── 108751 root │      0.0 0.1 00:00:00 │ bash /tmp/procs-lab-scratch/run-transcripts.sh
+    └──── 108755 root │      0.0 0.1 00:00:02 │ python3 fixtures/specimen-burner.py
+$ procs --tree | head -10
+           PID      User │ TTY     CPU MEM CPU Time │ Command
+                         │         [%] [%]          │
+ ├┬─────── 1        root │         0.0 0.1 00:00:09 │ /usr/lib/systemd/systemd
+ │├─────── 17       root │         0.0 0.1 00:00:01 │ /usr/lib/systemd/systemd-journald
+ │├─────── 102922   root │         0.0 0.1 00:00:00 │ python3 specimen-sleeper.py
+ │├─────── 102923   root │       100.9 0.1 00:05:18 │ python3 specimen-spinner.py
+ │├─────── 102924   root │         0.0 0.1 00:00:00 │ python3 specimen-server.py
+ │├─────── 102925   root │         0.0 3.9 00:00:00 │ python3 specimen-hog.py
+ │├┬────── 102926   root │         0.0 0.0 00:00:00 │ bash specimen-family.sh
+ ││├────── 102928   root │         0.0 0.0 00:00:00 │ sleep 900

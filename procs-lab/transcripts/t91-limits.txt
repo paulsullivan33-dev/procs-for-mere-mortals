@@ -1,0 +1,25 @@
+# the burner (fixtures/specimen-burner.py) burned one core
+# for four seconds, then went to sleep; it is asleep now
+$ procs burner
+ PID:▲  User │ TTY CPU MEM CPU Time │ Command
+             │     [%] [%]          │
+ 108755 root │     0.0 0.1 00:00:02 │ python3 fixtures/specimen-burner.py
+$ ps -o pid,pcpu,time,command -p 108755
+    PID %CPU     TIME COMMAND
+ 108755 32.7 00:00:02 python3 fixtures/specimen-burner.py
+$ procs spinner
+ PID:▲  User │ TTY  CPU MEM CPU Time │ Command
+             │      [%] [%]          │
+ 102923 root │     87.4 0.1 00:05:13 │ python3 specimen-spinner.py
+$ procs spinner
+ PID:▲  User │ TTY   CPU MEM CPU Time │ Command
+             │       [%] [%]          │
+ 102923 root │     106.8 0.1 00:05:13 │ python3 specimen-spinner.py
+# a respawner keeps starting mayflies: each lives 0.15s
+$ for i in 1 2 3 4 5 6; do procs mayfly | tail -n +3 | wc -l; sleep 0.4; done
+0
+0
+1
+0
+0
+1

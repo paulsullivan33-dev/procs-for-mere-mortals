@@ -1,0 +1,24 @@
+$ procs | head -14
+ PID:▲  User │ TTY    CPU MEM CPU Time │ Command
+             │        [%] [%]          │
+ 1      root │        0.0 0.1 00:00:09 │ /usr/lib/systemd/systemd
+ 17     root │        0.0 0.1 00:00:01 │ /usr/lib/systemd/systemd-journald
+ 67     root │       29.4 4.5 00:10:28 │ /opt/hatch/bin/hatch daemon --runtime-cell-leader=2233
+ 748    root │       19.6 0.2 00:01:11 │ /opt/hatch/bin/hatch-execd --runtime-cell-leader=2233
+ 102922 root │        0.0 0.1 00:00:00 │ python3 specimen-sleeper.py
+ 102923 root │       98.0 0.1 00:05:13 │ python3 specimen-spinner.py
+ 102924 root │        0.0 0.1 00:00:00 │ python3 specimen-server.py
+ 102925 root │        0.0 3.9 00:00:00 │ python3 specimen-hog.py
+ 102926 root │        0.0 0.0 00:00:00 │ bash specimen-family.sh
+ 102928 root │        0.0 0.0 00:00:00 │ sleep 900
+ 102929 root │        0.0 0.0 00:00:00 │ sleep 900
+ 103277 root │        0.0 0.0 00:00:00 │ /bin/bash --norc --noprofile -c umask 0007; mkdir -p /tmp/bwlab && cd /tmp/bwlab && (curl -sI https://github.com 2>&1 | head -5; echo "curl_exit:$?"); apt-get update -qq 2>&1 | tail -5; apt-cache policy bandwhich 2>&1 | head
+$ procs | wc -l
+45
+$ ps aux | head -6
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.1  0.0  22088  5900 ?        Ss   06:55   0:09 /usr/lib/systemd/systemd
+root          17  0.0  0.0  33972  4364 ?        Ss   06:55   0:01 /usr/lib/systemd/systemd-journald
+root          67  7.3  4.5 2231596 369476 ?      Sl   06:55  10:28 /opt/hatch/bin/hatch daemon --runtime-cell-leader=2233
+root         748  0.8  0.1  44572 15976 ?        Sl   06:55   1:11 /opt/hatch/bin/hatch-execd --runtime-cell-leader=2233
+root      102922  0.0  0.0  15460  6140 ?        Ss   09:10   0:00 python3 specimen-sleeper.py

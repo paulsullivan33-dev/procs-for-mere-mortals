@@ -1,0 +1,31 @@
+$ procs specimen
+ PID:▲  User │ TTY  CPU MEM CPU Time │ Command
+             │      [%] [%]          │
+ 102922 root │      0.0 0.1 00:00:00 │ python3 specimen-sleeper.py
+ 102923 root │     56.6 0.1 00:05:16 │ python3 specimen-spinner.py
+ 102924 root │      0.0 0.1 00:00:00 │ python3 specimen-server.py
+ 102925 root │      0.0 3.9 00:00:00 │ python3 specimen-hog.py
+ 102926 root │      0.0 0.0 00:00:00 │ bash specimen-family.sh
+ 108755 root │      0.0 0.1 00:00:02 │ python3 fixtures/specimen-burner.py
+$ procs sleeper
+ PID:▲  User │ TTY CPU MEM CPU Time │ Command
+             │     [%] [%]          │
+ 102922 root │     0.0 0.1 00:00:00 │ python3 specimen-sleeper.py
+$ procs 102922
+ PID:▲  User │ TTY CPU MEM CPU Time │ Command
+             │     [%] [%]          │
+ 102922 root │     0.0 0.1 00:00:00 │ python3 specimen-sleeper.py
+$ procs 1029
+ PID:▲ User │ TTY CPU MEM CPU Time │ Command
+            │     [%] [%]          │
+$ procs root | head -8
+ PID:▲  User │ TTY    CPU MEM CPU Time │ Command
+             │        [%] [%]          │
+ 1      root │        0.0 0.1 00:00:09 │ /usr/lib/systemd/systemd
+ 17     root │        0.0 0.1 00:00:01 │ /usr/lib/systemd/systemd-journald
+ 67     root │       49.0 4.6 00:10:29 │ /opt/hatch/bin/hatch daemon --runtime-cell-leader=2233
+ 748    root │        0.0 0.2 00:01:11 │ /opt/hatch/bin/hatch-execd --runtime-cell-leader=2233
+ 102922 root │        0.0 0.1 00:00:00 │ python3 specimen-sleeper.py
+ 102923 root │       98.0 0.1 00:05:16 │ python3 specimen-spinner.py
+$ procs root | tail -n +3 | wc -l
+28

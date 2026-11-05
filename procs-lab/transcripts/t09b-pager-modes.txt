@@ -1,0 +1,8 @@
+# on a 12-row terminal, a two-line result:
+$ ./pty-run.py --rows 12 --keys q --keys-delay 2 -- procs --pager always sleeper | ./render.sh | tail -3
+            │     [%] [%]          │                                     
+ 11023 root │     0.0 0.1 00:00:00 │ python3 fixtures/specimen-sleeper.py
+(END)>$ ./pty-run.py --rows 12 -- procs --pager disable | ./render.sh | wc -l
+18
+$ ./pty-run.py --rows 12 --keys q --keys-delay 2 -- procs | ./render.sh | wc -l
+11

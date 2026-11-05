@@ -1,0 +1,80 @@
+The lab — one release binary, six specimens, a terminal that answers
+====================================================================
+
+The lab is procs as its project ships it: the
+official release binary, procs 0.14.10
+(procs-v0.14.10-x86_64-linux.zip from the
+dalance/procs GitHub releases), run from a
+scratch folder on the build machine (an
+Ubuntu 24.04.5 sandbox, 4 CPUs, 7.9 GB RAM)
+rather than installed system-wide.
+Companion: ps from procps-ng 4.0.4.
+
+  * Specimens started by the lab
+    (procs-lab/fixtures/): specimen-sleeper.py
+    (sleeps), specimen-spinner.py (burns one
+    core in a pure loop), specimen-server.py
+    (listens on 127.0.0.1 port 18089),
+    specimen-hog.py (holds a ~300 MB
+    bytearray), specimen-family.sh (a parent
+    with two `sleep 900` children),
+    specimen-burner.py (burns for four
+    seconds, then sleeps), and
+    json-summary.py (reads procs --json and
+    divides its units back to percents).
+    For two exhibits the lab also started
+    argument-carrying sleepers (a nonsense
+    word as a trailing argument) and a
+    respawner of 0.15-second mayflies; those
+    were started inline, exactly as the
+    transcripts show.
+
+  * Helpers in procs-lab/: pty-run.py (runs
+    a command under a real terminal, a pty,
+    and ANSWERS the two questions procs asks
+    a terminal — device status report and
+    background colour — which the sandbox's
+    script(1) terminal does not answer, a
+    silence that left procs producing no
+    output at all and became one of the
+    exhibits), pager-spy.sh (a pretend pager
+    that records being called — it never
+    was; procs' pager is built in), and
+    render.sh (strips escape codes so
+    terminal output can be printed).
+
+  * Method notes. Every run was made with
+    HOME pointed at an empty folder in the
+    lab, so the machine's own configuration
+    could not leak into the experiments —
+    except the configuration chapter, whose
+    transcripts show the lab paths on
+    purpose. Specimens were started detached
+    so their table rows are honest (blank
+    TTY, adopted by PID 1). The build machine
+    was shared with other tenants, whose
+    processes appear in full-table
+    transcripts; every number quoted in the
+    text is a specimen's own. Percentages
+    are tenth-of-a-second samples and differ
+    between the transcripts for exactly the
+    reason chapter 14 gives.
+
+  * What was run lives in
+    procs-lab/transcripts/, one file per
+    exhibit (t00 versions, t01 first look,
+    t02 finding, t03 columns, t04 search
+    logic, t05 sorting, t06 tree, t07 json,
+    t08 configuration, t09 pipes/pagers/
+    colour, t09b pager modes, t10 watch with
+    its rendered watch-session.txt, t90 the
+    search trap, t91 the limits).
+
+  * Documented only: the macOS and Windows
+    builds and their column sets, the
+    package installation routes and
+    cargo install, the Docker columns (no
+    daemon in the sandbox), and the
+    neighbouring monitors of chapter 13
+    (characterised, not benchmarked).
+    criteria.md keeps the full ledger.

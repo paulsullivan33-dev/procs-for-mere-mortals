@@ -1,0 +1,39 @@
+$ procs --insert TcpPort specimen
+ PID:▲  User │ TTY  CPU MEM CPU Time     TCP │ Command
+             │      [%] [%]                  │
+ 102922 root │      0.0 0.1 00:00:00      [] │ python3 specimen-sleeper.py
+ 102923 root │     98.0 0.1 00:05:17      [] │ python3 specimen-spinner.py
+ 102924 root │      0.0 0.1 00:00:00 [18089] │ python3 specimen-server.py
+ 102925 root │      0.0 3.9 00:00:00      [] │ python3 specimen-hog.py
+ 102926 root │      0.0 0.0 00:00:00      [] │ bash specimen-family.sh
+ 108755 root │      0.0 0.1 00:00:02      [] │ python3 fixtures/specimen-burner.py
+$ procs --insert TcpPort --insert ElapsedTime --insert StartTime specimen
+ PID:▲  User │ TTY  CPU MEM CPU Time     TCP    Elapsed            Start │ Command
+             │      [%] [%]                                              │
+ 102922 root │      0.0 0.1 00:00:00      [] 7.5minutes 2026/11/05 09:10 │ python3 specimen-sleeper.py
+ 102923 root │     98.0 0.1 00:05:17      [] 7.5minutes 2026/11/05 09:10 │ python3 specimen-spinner.py
+ 102924 root │      0.0 0.1 00:00:00 [18089] 7.5minutes 2026/11/05 09:10 │ python3 specimen-server.py
+ 102925 root │      0.0 3.9 00:00:00      [] 7.5minutes 2026/11/05 09:10 │ python3 specimen-hog.py
+ 102926 root │      0.0 0.0 00:00:00      [] 7.5minutes 2026/11/05 09:10 │ bash specimen-family.sh
+ 108755 root │      0.0 0.1 00:00:02      []  12seconds 2026/11/05 09:18 │ python3 fixtures/specimen-burner.py
+$ procs --insert VmRss --insert State specimen
+ PID:▲  User │ TTY  CPU MEM CPU Time    VmRSS State │ Command
+             │      [%] [%]           [bytes]       │
+ 102922 root │      0.0 0.1 00:00:00   6.082M     S │ python3 specimen-sleeper.py
+ 102923 root │     98.0 0.1 00:05:17   5.957M     R │ python3 specimen-spinner.py
+ 102924 root │      0.0 0.1 00:00:00   6.645M     S │ python3 specimen-server.py
+ 102925 root │      0.0 3.9 00:00:00 305.934M     S │ python3 specimen-hog.py
+ 102926 root │      0.0 0.0 00:00:00   3.270M     S │ bash specimen-family.sh
+ 108755 root │      0.0 0.1 00:00:02   9.930M     S │ python3 fixtures/specimen-burner.py
+$ procs --use-config large specimen | cut -c1-165 | head -8
+ PID:▲  User │ State Nice TTY  CPU MEM   VmSize    VmRSS TCP     UDP  Read Write │ CPU Time Start            │ Command
+             │                 [%] [%]  [bytes]  [bytes]             [B/s] [B/s] │                           │
+ 102922 root │ S        0      0.0 0.1  15.098M   6.082M []      []      0     0 │ 00:00:00 2026/11/05 09:10 │ python3 specimen-sleeper.py
+ 102923 root │ R        0     87.4 0.1  15.098M   5.957M []      []      0     0 │ 00:05:17 2026/11/05 09:10 │ python3 specimen-spinner.py
+ 102924 root │ S        0      0.0 0.1  16.402M   6.645M [18089] []      0     0 │ 00:00:00 2026/11/05 09:10 │ python3 specimen-server.py
+ 102925 root │ S        0      0.0 3.9 315.102M 305.934M []      []      0     0 │ 00:00:00 2026/11/05 09:10 │ python3 specimen-hog.py
+ 102926 root │ S        0      0.0 0.0   4.242M   3.270M []      []      0     0 │ 00:00:00 2026/11/05 09:10 │ bash specimen-family.sh
+ 108755 root │ S        0      0.0 0.1  15.004M   9.930M []      []      0     0 │ 00:00:02 2026/11/05 09:18 │ python3 fixtures/specimen-burner.py
+$ procs --only TcpPort specimen
+error: kind "TcpPort" is not found in columns
+exit: 1

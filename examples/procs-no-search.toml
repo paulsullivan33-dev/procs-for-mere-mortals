@@ -1,0 +1,41 @@
+# procs-no-search.toml - the same columns as procs.toml but
+# with every search switch left off. The table prints, but
+# keyword search finds nothing at all: no column is marked
+# searchable. The configuration chapter uses this file to
+# prove that searchability is a property of the columns in
+# your configuration, not a property of procs.
+
+[[columns]]
+kind = "Pid"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "User"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "UsageCpu"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "UsageMem"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "TcpPort"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "ElapsedTime"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "Command"
+numeric_search = false
+nonnumeric_search = false

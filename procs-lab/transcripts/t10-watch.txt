@@ -1,0 +1,6 @@
+$ CTRLC=$(printf '\003')
+$ ./pty-run.py --rows 30 --keys "$CTRLC" --keys-delay 3.5 -- procs --watch specimen | ./render.sh > transcripts/watch-session.txt
+$ grep -c "CPU Time" transcripts/watch-session.txt
+3
+$ grep -c "specimen-spinner" transcripts/watch-session.txt
+3

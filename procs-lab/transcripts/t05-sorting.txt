@@ -1,0 +1,26 @@
+$ procs --sortd UsageCpu | head -7
+ PID    User │ TTY   CPU:▼ MEM CPU Time  CPU │ Command
+             │         [%] [%]           [%] │
+ 102923 root │        98.0 0.1 00:05:18 98.0 │ python3 specimen-spinner.py
+ 67     root │        29.4 4.6 00:10:30 29.4 │ /opt/hatch/bin/hatch daemon --runtime-cell-leader=2233
+ 748    root │         9.8 0.2 00:01:11  9.8 │ /opt/hatch/bin/hatch-execd --runtime-cell-leader=2233
+ 1      root │         0.0 0.1 00:00:09  0.0 │ /usr/lib/systemd/systemd
+ 108938 root │         0.0 0.0 00:00:00  0.0 │ head -7
+$ procs --sortd UsageMem specimen
+ PID    User │ TTY  CPU MEM:▼ CPU Time MEM │ Command
+             │      [%]   [%]          [%] │
+ 102925 root │      0.0   3.9 00:00:00 3.9 │ python3 specimen-hog.py
+ 108755 root │      0.0   0.1 00:00:02 0.1 │ python3 fixtures/specimen-burner.py
+ 102924 root │      0.0   0.1 00:00:00 0.1 │ python3 specimen-server.py
+ 102922 root │      0.0   0.1 00:00:00 0.1 │ python3 specimen-sleeper.py
+ 102923 root │     98.0   0.1 00:05:18 0.1 │ python3 specimen-spinner.py
+ 102926 root │      0.0   0.0 00:00:00 0.0 │ bash specimen-family.sh
+$ procs --sorta UsageCpu specimen
+ PID    User │ TTY CPU:▲ MEM CPU Time  CPU │ Command
+             │       [%] [%]           [%] │
+ 102922 root │       0.0 0.1 00:00:00  0.0 │ python3 specimen-sleeper.py
+ 102924 root │       0.0 0.1 00:00:00  0.0 │ python3 specimen-server.py
+ 102926 root │       0.0 0.0 00:00:00  0.0 │ bash specimen-family.sh
+ 108755 root │       0.0 0.1 00:00:02  0.0 │ python3 fixtures/specimen-burner.py
+ 102925 root │       0.0 3.9 00:00:00  0.0 │ python3 specimen-hog.py
+ 102923 root │      98.0 0.1 00:05:18 98.0 │ python3 specimen-spinner.py

@@ -1,0 +1,29 @@
+site_name: procs for Mere Mortals
+site_description: A modern reader for the process table. Finding the process you mean, choosing the columns that answer your question, sorting, tree and watch views, honest numbers, and the configuration that makes the table yours.
+site_url: https://paulsullivan33-dev.github.io/procs-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What procs Is: what-procs-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing procs: installing-procs.md
+  - Your First Table: your-first-table.md
+  - Finding a Process: finding-a-process.md
+  - Combining Searches: combining-searches.md
+  - Choosing Columns: choosing-columns.md
+  - Sorting and the Tree: sorting-and-the-tree.md
+  - Watch Mode: watch-mode.md
+  - Pipes, Pagers and Colour: pipes-pagers-and-colour.md
+  - procs in Scripts: procs-in-scripts.md
+  - Making It Yours: making-it-yours.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

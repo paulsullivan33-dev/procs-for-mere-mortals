@@ -1,0 +1,30 @@
+ Interval: 1000ms, Last Updated: 2026/11/05 09:18:21 ( Next: n, Prev: p, Ascending: a, Descending: d, Quit: q or Ctrl-C )
+
+ PID:▲  User │ TTY  CPU MEM CPU Time │ Command                            
+             │      [%] [%]          │                                    
+ 102922 root │      0.0 0.1 00:00:00 │ python3 specimen-sleeper.py        
+ 102923 root │     78.4 0.1 00:05:24 │ python3 specimen-spinner.py        
+ 102924 root │      0.0 0.1 00:00:00 │ python3 specimen-server.py         
+ 102925 root │      0.0 3.9 00:00:00 │ python3 specimen-hog.py            
+ 102926 root │      0.0 0.0 00:00:00 │ bash specimen-family.sh            
+ 108755 root │      0.0 0.1 00:00:02 │ python3 fixtures/specimen-burner.py
+ Interval: 1000ms, Last Updated: 2026/11/05 09:18:22 ( Next: n, Prev: p, Ascending: a, Descending: d, Quit: q or Ctrl-C )
+
+ PID:▲  User │ TTY   CPU MEM CPU Time │ Command                            
+             │       [%] [%]          │                                    
+ 102922 root │       0.0 0.1 00:00:00 │ python3 specimen-sleeper.py        
+ 102923 root │     105.8 0.1 00:05:25 │ python3 specimen-spinner.py        
+ 102924 root │       0.0 0.1 00:00:00 │ python3 specimen-server.py         
+ 102925 root │       0.0 3.9 00:00:00 │ python3 specimen-hog.py            
+ 102926 root │       0.0 0.0 00:00:00 │ bash specimen-family.sh            
+ 108755 root │       0.0 0.1 00:00:02 │ python3 fixtures/specimen-burner.py
+ Interval: 1000ms, Last Updated: 2026/11/05 09:18:23 ( Next: n, Prev: p, Ascending: a, Descending: d, Quit: q or Ctrl-C )
+
+ PID:▲  User │ TTY   CPU MEM CPU Time │ Command                            
+             │       [%] [%]          │                                    
+ 102922 root │       0.0 0.1 00:00:00 │ python3 specimen-sleeper.py        
+ 102923 root │      92.6 0.1 00:05:26 │ python3 specimen-spinner.py        
+ 102924 root │       0.0 0.1 00:00:00 │ python3 specimen-server.py         
+ 102925 root │       0.0 3.9 00:00:00 │ python3 specimen-hog.py            
+ 102926 root │       0.0 0.0 00:00:00 │ bash specimen-family.sh            
+ 108755 root │       0.0 0.1 00:00:02 │ python3 fixtures/specimen-burner.py

@@ -1,0 +1,40 @@
+# procs.toml - the configuration built in the "Making it yours"
+# chapter: a small, deliberate column set with the search
+# switches set on purpose. Pid can be searched by number,
+# User and Command by text; the rest are display-only.
+# Full sample with every option: procs --gen-config
+
+[[columns]]
+kind = "Pid"
+numeric_search = true
+nonnumeric_search = false
+
+[[columns]]
+kind = "User"
+numeric_search = false
+nonnumeric_search = true
+
+[[columns]]
+kind = "UsageCpu"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "UsageMem"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "TcpPort"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "ElapsedTime"
+numeric_search = false
+nonnumeric_search = false
+
+[[columns]]
+kind = "Command"
+numeric_search = false
+nonnumeric_search = true

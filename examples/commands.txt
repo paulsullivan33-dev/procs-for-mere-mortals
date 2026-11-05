@@ -1,0 +1,94 @@
+procs — the distilled commands
+====================================================================
+Placeholders: <word> is a keyword of
+yours; <pid> is a full process ID;
+<kind> is a column kind from
+procs --list.
+
+FIRST LOOKS (chapters 3-4)
+--------------------------------------------------------------------
+  procs --version                  # the check every install
+                                   # must pass
+  procs                            # the whole table
+  procs | wc -l                    # lines minus 2 = how many
+                                   # processes are running
+  procs --list                     # every column kind your
+                                   # build has (76 on the lab's)
+  procs --gen-config               # the full configuration
+                                   # sample, all 140 lines
+
+FINDING (chapters 5-6)
+--------------------------------------------------------------------
+  procs <word>                     # rows containing <word>
+                                   # in a searchable column
+  procs <pid>                      # exact PID — numbers match
+                                   # exactly, never in part
+  procs <user>                     # that user's processes
+                                   # (the user column is
+                                   # searched too)
+  procs <word1> <word2>            # both words (AND, the
+                                   # default logic)
+  procs --or <word1> <word2>       # either word
+  procs --nand <word1> <word2>     # all but rows matching both
+  procs --nor <word1> <word2>      # all but rows matching any
+  procs ZANZIBAR                   # a capital makes matching
+                                   # case-sensitive (smart case)
+
+COLUMNS (chapter 7)
+--------------------------------------------------------------------
+  procs --insert TcpPort           # add a column for one run;
+                                   # [18089] = the port's owner
+  procs --insert StartTime <word>  # when it began; ElapsedTime
+                                   # is the same fact as words
+  procs --insert VmRss --insert State
+                                   # real sizes, and R/S state
+  procs --use-config large         # the wide factory column set
+  procs --only PID                 # narrow to a column that is
+                                   # already in the table
+
+SORTING AND THE TREE (chapter 8)
+--------------------------------------------------------------------
+  procs --sortd UsageCpu | head    # the greediest first (▼)
+  procs --sortd UsageMem <word>    # sort applies after search
+  procs --sorta UsageCpu           # ascending (▲)
+  procs --tree                     # the whole family tree
+  procs --tree <word>              # matches, with their parents
+                                   # and their children
+
+WATCH (chapter 9)
+--------------------------------------------------------------------
+  procs --watch                    # refresh every second;
+                                   # n/p change the sort column,
+                                   # a/d the direction, q leaves
+  procs --watch <word>             # watch only the matches
+  procs --watch-interval 5 <word>  # a slower refresh
+
+PIPES, PAGER, COLOUR (chapter 10)
+--------------------------------------------------------------------
+  procs <word> | tr -cd '\033' | wc -c
+                                   # 0: a pipe is always plain
+  procs --color always <word>      # force colour into a pipe
+                                   # (values: auto/always/disable)
+  procs --theme dark               # settle the background
+                                   # without asking the terminal
+  procs --pager always <word>      # page even a two-line result
+  procs --pager disable            # never page
+
+SCRIPTS (chapter 11)
+--------------------------------------------------------------------
+  procs <word> | tail -n +3        # skip the two header lines
+  procs --json <word>              # objects keyed by header;
+                                   # CPU/MEM in thousandths of a
+                                   # percent, CPU Time in seconds
+  procs --json --insert TcpPort <pid>
+                                   # ask for exactly the keys
+                                   # your script reads
+
+CONFIGURATION (chapter 12)
+--------------------------------------------------------------------
+  procs --load-config <file> <word>
+                                   # try a config for one run
+  cp <file> ~/.procs.toml          # adopt it as your default
+  procs --gen-config > reference.toml
+                                   # keep the factory sample
+                                   # beside yours for comparison
